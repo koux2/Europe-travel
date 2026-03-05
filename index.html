@@ -1,0 +1,1990 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ヨーロッパ家族旅行 2026 🌍</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --blue: #1a6fc4;
+            --blue-light: #e8f1fb;
+            --gold: #c9a84c;
+            --dark: #1a1f2e;
+            --gray: #5a6070;
+            --bg: #f7f8fc;
+            --white: #ffffff;
+            --red: #d94040;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background: var(--bg);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #1a2744 0%, #1a6fc4 60%, #2a9d8f 100%);
+            color: white;
+            padding: 60px 24px 48px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            margin-bottom: 12px;
+            letter-spacing: 0.02em;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            opacity: 0.88;
+        }
+
+        .hero .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 28px;
+        }
+
+        .badge {
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 24px;
+            padding: 6px 18px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Route summary */
+        .route-bar {
+            background: var(--dark);
+            color: white;
+            padding: 18px 24px;
+            overflow-x: auto;
+            white-space: nowrap;
+            text-align: center;
+            font-size: 0.92rem;
+        }
+
+        .route-bar span {
+            opacity: 0.6;
+            margin: 0 4px;
+        }
+
+        .route-bar strong {
+            color: #7ec8e3;
+        }
+
+        .route-bar .fly {
+            color: #ffd166;
+        }
+
+        /* Nav */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: white;
+            border-bottom: 2px solid var(--blue-light);
+            padding: 0 16px;
+            display: flex;
+            gap: 4px;
+            overflow-x: auto;
+        }
+
+        nav a {
+            display: block;
+            padding: 14px 16px;
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+            white-space: nowrap;
+            border-bottom: 3px solid transparent;
+            transition: all .2s;
+        }
+
+        nav a:hover {
+            color: var(--blue);
+            border-bottom-color: var(--blue);
+        }
+
+        /* Content */
+        main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 32px 16px 64px;
+        }
+
+        .country-section {
+            margin-bottom: 56px;
+        }
+
+        .country-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--blue-light);
+        }
+
+        .country-header .flag {
+            font-size: 2rem;
+        }
+
+        .country-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--dark);
+        }
+
+        .country-header .nights {
+            margin-left: auto;
+            background: var(--blue-light);
+            color: var(--blue);
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        /* City label */
+        .city-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin: 28px 0 12px;
+        }
+
+        .city-label.stopover {
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .city-label.stopover::before {
+            content: '🚉';
+        }
+
+        .city-label.daytrip {
+            color: #2a9d8f;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .city-label.daytrip::before {
+            content: '🌅';
+        }
+
+        /* Cards grid */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 14px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+            border-left: 4px solid var(--blue);
+            transition: transform .2s, box-shadow .2s;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .card.stopover {
+            border-left-color: var(--gold);
+        }
+
+        .card.daytrip {
+            border-left-color: #2a9d8f;
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .star {
+            color: #f4a261;
+            font-size: 0.9rem;
+        }
+
+        .card-desc {
+            font-size: 0.875rem;
+            color: var(--gray);
+        }
+
+        .img-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            color: var(--blue);
+            text-decoration: none;
+            margin-top: auto;
+            padding-top: 6px;
+        }
+
+        .img-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Note / excluded */
+        .note {
+            background: #fff8e6;
+            border-left: 4px solid var(--gold);
+            border-radius: 0 8px 8px 0;
+            padding: 12px 16px;
+            font-size: 0.875rem;
+            color: #7a5c00;
+            margin-top: 12px;
+        }
+
+        .excluded {
+            background: #fff0f0;
+            border-left: 4px solid var(--red);
+            border-radius: 0 8px 8px 0;
+            padding: 12px 16px;
+            font-size: 0.875rem;
+            color: #8b2020;
+            margin-top: 12px;
+        }
+
+        .excluded strong {
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* Route section */
+        .route-section {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 48px;
+        }
+
+        .route-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .route-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .step {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        .step-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 32px;
+        }
+
+        .step-dot {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--blue);
+            border: 3px solid var(--blue-light);
+            flex-shrink: 0;
+            margin-top: 4px;
+        }
+
+        .step-line {
+            width: 2px;
+            flex: 1;
+            min-height: 32px;
+            background: var(--blue-light);
+        }
+
+        .step-content {
+            padding-bottom: 20px;
+            flex: 1;
+        }
+
+        .step-city {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .step-nights {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        .step-transport {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            color: var(--gray);
+            background: var(--bg);
+            border-radius: 12px;
+            padding: 2px 10px;
+            margin: 4px 0;
+        }
+
+        .step-transport.fly {
+            color: #c47a00;
+            background: #fff5e0;
+        }
+
+        /* Info box */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 14px;
+            margin-bottom: 48px;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+            text-align: center;
+        }
+
+        .info-card .icon {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .info-card .label {
+            font-size: 0.78rem;
+            color: var(--gray);
+            margin-bottom: 4px;
+        }
+
+        .info-card .value {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 32px;
+            padding-bottom: 72px;
+            color: var(--gray);
+            font-size: 0.85rem;
+            border-top: 1px solid #e0e4f0;
+        }
+
+        @media (max-width: 600px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        <h1>🌍 ヨーロッパ家族旅行 2026</h1>
+        <div class="meta">
+            <span class="badge">👨‍👩‍👧‍👦 大人2名・11歳・4歳</span>
+            <span class="badge">📅 7/21（夜）〜 8/26（朝）</span>
+            <span class="badge">🚂 ユーレイルパス活用</span>
+            <span class="badge">✈️ 行き：JAL直行 成田→フランクフルト</span>
+            <span class="badge">✈️ 帰り：カタール航空 ロンドン→成田</span>
+        </div>
+    </div>
+
+    <div class="route-bar">
+        <span class="fly">✈️ JAL直行</span><span>→</span>
+        <strong>フランクフルト</strong><span>→</span>
+        <strong>プラハ</strong><span>→</span>
+        <strong>ウィーン</strong><span>→</span>
+        <strong>ミュンヘン</strong><span>→</span>
+        <strong>スイス</strong><span>→</span>
+        <strong>ヴェネツィア</strong><span>→</span>
+        <strong>フィレンツェ</strong><span>→</span>
+        <strong>ローマ</strong><span>→</span>
+        <span class="fly">✈️</span>
+        <strong>バルセロナ</strong><span>→</span>
+        <strong>パリ+ディズニー</strong><span>→</span>
+        <strong>ロンドン</strong>
+        <span class="fly">✈️ → 帰国</span>
+    </div>
+
+    <nav>
+        <a href="#route">ルート</a>
+        <a href="#de">🇩🇪 ドイツ</a>
+        <a href="#cz">🇨🇿 チェコ</a>
+        <a href="#at">🇦🇹 オーストリア</a>
+        <a href="#ch">🇨🇭 スイス</a>
+        <a href="#it">🇮🇹 イタリア</a>
+        <a href="#es">🇪🇸 スペイン</a>
+        <a href="#fr">🇫🇷 フランス</a>
+        <a href="#gb">🇬🇧 イギリス</a>
+    </nav>
+
+    <main>
+
+        <!-- Key Info -->
+        <div class="info-grid" style="margin-top:32px;">
+            <div class="info-card">
+                <div class="icon">🚂</div>
+                <div class="label">ユーレイルパス</div>
+                <div class="value">12歳未満無料</div>
+            </div>
+            <div class="info-card">
+                <div class="icon">✈️</div>
+                <div class="label">国際フライト</div>
+                <div class="value">ローマ→バルセロナ 1回のみ</div>
+            </div>
+            <div class="info-card">
+                <div class="icon">🏨</div>
+                <div class="label">パリ・ロンドン</div>
+                <div class="value">Airbnb拠点でのんびり</div>
+            </div>
+            <div class="info-card">
+                <div class="icon">🎡</div>
+                <div class="label">ディズニー</div>
+                <div class="value">パリで2〜3日</div>
+            </div>
+            <div class="info-card">
+                <div class="icon">🛬</div>
+                <div class="label">行き便</div>
+                <div class="value">JL407<br><span style="font-size:0.85rem;font-weight:400">NRT 10:35 → FRA 17:45</span>
+                </div>
+            </div>
+            <div class="info-card">
+                <div class="icon">🛫</div>
+                <div class="label">帰国便</div>
+                <div class="value">QR112<br><span style="font-size:0.85rem;font-weight:400">LHR 09:30 → NRT
+                        翌12:55</span></div>
+            </div>
+        </div>
+
+        <!-- Route -->
+        <div id="route" class="route-section">
+            <h2>📍 旅程概要（ルートB）</h2>
+            <div class="route-steps">
+                <div class="step">
+                    <div class="step-left">
+                        <div class="step-dot"></div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-city">フランクフルト</div>
+                        <div class="step-nights">7/21夜 着・1泊（移動なし）</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-left">
+                        <div class="step-dot"></div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-transport">🚂 電車 約4h</div>
+                        <div class="step-city">プラハ</div>
+                        <div class="step-nights">3泊</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-left">
+                        <div class="step-dot"></div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-transport">🚂 電車 約4h</div>
+                        <div class="step-city">ウィーン</div>
+                        <div class="step-nights">3泊</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-left">
+                        <div class="step-dot"></div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-transport">🚂 電車 約4h（ザルツブルク途中下車も可）</div>
+                        <div class="step-city">ミュンヘン</div>
+                        <div class="step-nights">2〜3泊</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-left">
+                        <div class="step-dot"></div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-transport">🚂 電車 約3.5h</div>
+                        <div class="step-city">スイス（ルツェルン/チューリッヒ）</div>
+                        <div class="step-nights">2泊</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-left">
+                        <div class="step-dot"></div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-transport">🚂 電車 約3.5h</div>
+                        <div class="step-city">ヴェネツィア</div>
+                        <div class="step-nights">2泊</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-left">
+                        <div class="step-dot"></div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-transport">🚂 電車 約2h（ヴェローナ途中下車も可）</div>
+                        <div class="step-city">フィレンツェ</div>
+                        <div class="step-nights">2泊（ピサ日帰り可）</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-left">
+                        <div class="step-dot"></div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-transport">🚂 電車 約1.5h</div>
+                        <div class="step-city">ローマ</div>
+                        <div class="step-nights">3泊</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-left">
+                        <div class="step-dot" style="background:#c47a00"></div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-transport fly">✈️ フライト 約2h</div>
+                        <div class="step-city">バルセロナ</div>
+                        <div class="step-nights">3泊</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-left">
+                        <div class="step-dot"></div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-transport">🚂 TGV 約6.5h（リヨン途中下車も可）</div>
+                        <div class="step-city">パリ + ディズニーランド・パリ</div>
+                        <div class="step-nights">5〜6泊（Airbnb）</div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-left">
+                        <div class="step-dot"></div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-transport">🚂 Eurostar 約2.5h</div>
+                        <div class="step-city">ロンドン</div>
+                        <div class="step-nights">9〜10泊（Airbnb・ここから帰国）</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Frankfurt -->
+        <div class="country-section">
+            <div class="country-header">
+                <span class="flag">🇩🇪</span>
+                <h2>フランクフルト <span style="font-size:1rem;color:var(--gray)">（到着日・1泊）</span></h2>
+                <span class="nights">7/21夜着・翌朝出発</span>
+            </div>
+            <div class="city-label">フランクフルト</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title">レーマー広場 & 旧市街</div>
+                    <div class="card-desc">カラフルな木組みの建物が並ぶ中世の広場。夜でも美しく、到着日の散策に最適</div><a class="img-link"
+                        href="https://www.google.com/search?q=Romerberg+Frankfurt+old+town&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">マイン川沿い博物館通り</div>
+                    <div class="card-desc">川沿いに美術館・博物館が10館以上並ぶ。翌朝の散歩に◎。シュテーデル美術館は子ども無料</div><a class="img-link"
+                        href="https://www.google.com/search?q=Frankfurt+Museumsufer+Main+river&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">クライネ・マルクトハレ（市場）<span class="star">⭐</span></div>
+                    <div class="card-desc">地元の朝市。ソーセージ・プレッツェル・フルーツを買い食い。旅のスタートに活力</div><a class="img-link"
+                        href="https://www.google.com/search?q=Frankfurt+market+hall+sausage&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+            </div>
+            <div class="city-label stopover">途中下車候補：ベルリン（フランクフルト→ICE 3.5h→プラハ 4.5h）</div>
+            <div class="note">💡 ベルリンは1泊では収まりきれない。組み込む場合はニュルンベルク途中下車を「ベルリン泊（2泊）」に切り替えるのが現実的。日程と照らし合わせて検討。</div>
+            <div class="cards">
+                <div class="card stopover">
+                    <div class="card-title">ブランデンブルク門</div>
+                    <div class="card-desc">ベルリンのシンボル。ワイマール島とティアガルテン公園が鈲判。子どもが走り回れる広い広場</div><a class="img-link"
+                        href="https://www.google.com/search?q=Brandenburg+Gate+Berlin&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">ミュージアム島（ペルガモン博物館等）</div>
+                    <div class="card-desc">シュプレー島に5館が集中。バビロンの道・エジプト展示など子どもにも迳誘力山盛り。世界遺産</div><a class="img-link"
+                        href="https://www.google.com/search?q=Pergamon+Museum+Berlin+island&tbm=isch" target="_blank">�
+                        画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">イーストサイドギャラリー（ベルリンの壁）</div>
+                    <div class="card-desc">元ベルリンの壁に世界中のアーティストの壁画が盖う魂のギャラリー。歴史的参考になる</div><a class="img-link"
+                        href="https://www.google.com/search?q=East+Side+Gallery+Berlin+Wall&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">LEGOLAND ディスカバリーセンター <span class="star">⭐</span></div>
+                    <div class="card-desc">室内型レゴランド。ベルリンのコンパクトな建物をレゴで再現。雨の日の保険に最適。4歳向け</div><a class="img-link"
+                        href="https://www.google.com/search?q=LEGOLAND+Discovery+Centre+Berlin&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">ベルリン動物園 <span class="star">⭐</span></div>
+                    <div class="card-desc">ヨーロッパ最大級の動物園の1つ。ゴリラ・パンダ・アシカ山豬が人気。子どもに大容量の1日コース</div><a class="img-link"
+                        href="https://www.google.com/search?q=Berlin+Zoo+gorilla+panda&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Germany -->
+        <div id="de" class="country-section">
+            <div class="country-header">
+                <span class="flag">🇩🇪</span>
+                <h2>ドイツ</h2>
+                <span class="nights">ミュンヘン 2〜3泊</span>
+            </div>
+
+            <div class="city-label">ミュンヘン</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title">マリエン広場 & グロッケンシュピール</div>
+                    <div class="card-desc">毎日11時・12時に動く巨大からくり時計。広場の雰囲気も最高</div><a class="img-link"
+                        href="https://www.google.com/search?q=Marienplatz+Munich+Glockenspiel&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ドイツ博物館 <span class="star">⭐</span></div>
+                    <div class="card-desc">世界最大級の科学技術博物館。飛行機・船・電気実験など11歳には大興奮</div><a class="img-link"
+                        href="https://www.google.com/search?q=Deutsches+Museum+Munich+interior&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">BMW ヴェルト</div>
+                    <div class="card-desc">入場無料。未来の車やバイクの展示。子どもが乗れるコーナーも</div><a class="img-link"
+                        href="https://www.google.com/search?q=BMW+Welt+Munich&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">英国庭園（イングリッシュガーデン）</div>
+                    <div class="card-desc">広大な公園。川遊びエリアあり、4歳も自由に走り回れる</div><a class="img-link"
+                        href="https://www.google.com/search?q=English+Garden+Munich+Eisbach&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ニンフェンブルク宮殿</div>
+                    <div class="card-desc">広大な庭園つきの夏の離宮。ボートレンタルも可</div><a class="img-link"
+                        href="https://www.google.com/search?q=Nymphenburg+Palace+Munich&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">レジデンツ（ミュンヘン王宮）</div>
+                    <div class="card-desc">歴代バイエルン王の宮殿。130室を超える豪華な部屋と宝物館。中心部にありアクセス◎</div><a class="img-link"
+                        href="https://www.google.com/search?q=Munich+Residenz+interior&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ヴィクトゥアーリエンマルクト（青空市場）<span class="star">⭐</span></div>
+                    <div class="card-desc">毎日開かれる老舗市場。ソーセージ・チーズ・スイーツをその場で食べ歩き</div><a class="img-link"
+                        href="https://www.google.com/search?q=Viktualienmarkt+Munich&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+            </div>
+
+            <div class="city-label stopover">途中下車候補：ニュルンベルク（フランクフルト→プラハ間 約1.5h）</div>
+            <div class="cards">
+                <div class="card stopover">
+                    <div class="card-title">ニュルンベルク城</div>
+                    <div class="card-desc">丘の上の中世の城。旧市街の眺めが絶景</div><a class="img-link"
+                        href="https://www.google.com/search?q=Nuremberg+Castle+old+town&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">ドイツ鉄道博物館 <span class="star">⭐</span></div>
+                    <div class="card-desc">蒸気機関車・新幹線ICEが展示。子ども大喜び</div><a class="img-link"
+                        href="https://www.google.com/search?q=German+Railway+Museum+Nuremberg&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">おもちゃ博物館 <span class="star">⭐</span></div>
+                    <div class="card-desc">ニュルンベルクはドイツのおもちゃの街。4歳に特におすすめ</div><a class="img-link"
+                        href="https://www.google.com/search?q=Nuremberg+Toy+Museum&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Czech -->
+        <div id="cz" class="country-section">
+            <div class="country-header">
+                <span class="flag">🇨🇿</span>
+                <h2>チェコ</h2>
+                <span class="nights">プラハ 3泊</span>
+            </div>
+            <div class="city-label">プラハ</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title">旧市街広場 & 天文時計</div>
+                    <div class="card-desc">毎時0分に動く中世の仕掛け時計。カラフルな建物に囲まれた広場</div><a class="img-link"
+                        href="https://www.google.com/search?q=Prague+Astronomical+Clock+Old+Town+Square&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">プラハ城</div>
+                    <div class="card-desc">世界最大の城郭。衛兵交代もあり子どもが喜ぶ</div><a class="img-link"
+                        href="https://www.google.com/search?q=Prague+Castle+aerial+view&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">カレル橋</div>
+                    <div class="card-desc">聖人像が並ぶ石橋。ヴルタヴァ川と城のパノラマが絶景</div><a class="img-link"
+                        href="https://www.google.com/search?q=Charles+Bridge+Prague+sunset&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ペトシーン公園 & 展望塔</div>
+                    <div class="card-desc">ケーブルカーで丘に登れる。ミニ「エッフェル塔」的な展望台あり</div><a class="img-link"
+                        href="https://www.google.com/search?q=Petrin+Hill+tower+Prague&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">プラハ動物園 <span class="star">⭐</span></div>
+                    <div class="card-desc">ヨーロッパ屈指の動物園。4歳に大人気。広くて1日楽しめる</div><a class="img-link"
+                        href="https://www.google.com/search?q=Prague+Zoo&tbm=isch" target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">クトナー・ホラ（骨骸教会） <span class="star">⭐⭐</span></div>
+                    <div class="card-desc">プラハから電車60分。セドレツ修道院の4万人の骨で飾られた骨骸教会・UNESCO世界遺産の銀鉱山の都市。11歳に超インパクト</div><a
+                        class="img-link"
+                        href="https://www.google.com/search?q=Kutna+Hora+bone+church+ossuary+Czech+UNESCO&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ストラホフ修道院</div>
+                    <div class="card-desc">プラハ城の近く。荘厳なバロック様式の図書館が見もの。外観の景色も抜群</div><a class="img-link"
+                        href="https://www.google.com/search?q=Strahov+Monastery+Library+Prague&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ヴィシェフラード</div>
+                    <div class="card-desc">ヴルタヴァ川を見下ろす岩山の城跡。広い公園と絶景テラスは子どもが自由に走れる</div><a class="img-link"
+                        href="https://www.google.com/search?q=Vysehrad+Prague+river+view&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ユダヤ人地区（ヨゼフォフ）</div>
+                    <div class="card-desc">ヨーロッパ最大のユダヤ人地区。シナゴーグ・わり山冬店・㐼山者の山墓地など欴史を画物、感慧深いエリア</div><a class="img-link"
+                        href="https://www.google.com/search?q=Josefov+Jewish+Quarter+Prague+synagogue&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ミュシャ美術館（アルフォンス・ムハ）</div>
+                    <div class="card-desc">アールヌーボーの大家ムハの作品を展示。絵の美しさは子どもにも直感的に伝わる</div><a class="img-link"
+                        href="https://www.google.com/search?q=Mucha+Museum+Prague+Art+Nouveau&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Czech Krumlov stopover -->
+        <div class="country-section" style="background: linear-gradient(135deg, #f0fdf4, #f0f9ff);">
+            <div class="country-header" style="background: linear-gradient(135deg, #0f766e, #0369a1);">
+                <span class="flag">🇨🇿</span>
+                <h2>チェスキー・クルムロフ <span style="font-size:1rem;opacity:0.85">（プラハ→ウィーン途中）</span></h2>
+                <span class="nights">途中下車候補・ 1泊</span>
+            </div>
+            <div class="city-label stopover">途中下車候補：チェスキー・クルムロフ（プラハからバス 3h、ウィーンからバス 4h）</div>
+            <div class="cards">
+                <div class="card stopover">
+                    <div class="card-title">チェスキー・クルムロフ城郭市 <span class="star">⭐⭐</span></div>
+                    <div class="card-desc">チェコ定番の絵本のような小さな城郭都市・UNESCO世界遺産。赤、黄色のコンパクトな庭と川沿いの景色が魔法的</div><a
+                        class="img-link"
+                        href="https://www.google.com/search?q=Cesky+Krumlov+castle+UNESCO+Czech&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">ウルタヴァ川沿いの旧市街散策</div>
+                    <div class="card-desc">川がグルッと曲がりその中心に小さな旧市街。魔法の迷路のような地形が全家御特歇</div><a class="img-link"
+                        href="https://www.google.com/search?q=Cesky+Krumlov+old+town+river+bend&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+            </div>
+            <div class="note">💡 チェコの隐れた宝石。プラハからバスでもウィーンからバスでもアクセス可能。都市間の移動日に故進で寄るのが実用的。</div>
+        </div>
+
+        <!-- Austria -->
+        <div id="at" class="country-section">
+            <div class="country-header">
+                <span class="flag">🇦🇹</span>
+                <h2>オーストリア</h2>
+                <span class="nights">ウィーン 3泊</span>
+            </div>
+            <div class="city-label">ウィーン</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title">シェーンブルン宮殿 & 動物園 <span class="star">⭐</span></div>
+                    <div class="card-desc">宮殿敷地内に世界最古の動物園あり。庭も広くて子どもが走り回れる</div><a class="img-link"
+                        href="https://www.google.com/search?q=Schoenbrunn+Palace+Vienna+garden&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">プラーター遊園地 & 大観覧車 <span class="star">⭐</span></div>
+                    <div class="card-desc">1897年から続く老舗遊園地。巨大な赤い観覧車が名物</div><a class="img-link"
+                        href="https://www.google.com/search?q=Prater+Vienna+Riesenrad+ferris+wheel&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">自然史博物館</div>
+                    <div class="card-desc">恐竜の骨格・隕石・宝石など展示が充実。子ども向けエリアあり</div><a class="img-link"
+                        href="https://www.google.com/search?q=Natural+History+Museum+Vienna+dinosaur&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ホーフブルク宮殿</div>
+                    <div class="card-desc">ハプスブルク家の冬の宮殿。ザッハートルテ発祥の地</div><a class="img-link"
+                        href="https://www.google.com/search?q=Hofburg+Palace+Vienna&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ベルヴェデーレ宮殿</div>
+                    <div class="card-desc">上宮と下宮の2棟。宮殿前の庭園が美しく写真映え抜群</div><a class="img-link"
+                        href="https://www.google.com/search?q=Belvedere+Palace+Vienna+garden&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">シュテファン大聖堂</div>
+                    <div class="card-desc">ウィーン旧市街のシンボル。美しいモザイク屋根と展望塔からの眺めが◎</div><a class="img-link"
+                        href="https://www.google.com/search?q=St+Stephens+Cathedral+Vienna&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ウィーン少年合唱団</div>
+                    <div class="card-desc">日曜のミサで無料鑑賞可能（要整理券）。子どもも含め感動的な体験</div><a class="img-link"
+                        href="https://www.google.com/search?q=Vienna+Boys+Choir&tbm=isch" target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">カフェ・ツェントラル（カフェ文化）<span class="star">⭐</span></div>
+                    <div class="card-desc">豪華な宮殿風の内装。ウィーンのカフェ文化を体験。ザッハートルテとメランジェに課金する小超体験</div><a class="img-link"
+                        href="https://www.google.com/search?q=Cafe+Central+Vienna+interior&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ナッシュマルクト（市場）<span class="star">⭐</span></div>
+                    <div class="card-desc">オーストリア最大の青空市場。ケバブ・チーズ・鳥を買い食い。子どもが奨びるみたいな場所</div><a class="img-link"
+                        href="https://www.google.com/search?q=Naschmarkt+Vienna+market&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+            </div>
+
+            <div class="city-label stopover">途中下車候補：ザルツブルク（ウィーン→ミュンヘン間 約2.5h）</div>
+            <div class="cards">
+                <div class="card stopover">
+                    <div class="card-title">ホーエンザルツブルク城</div>
+                    <div class="card-desc">旧市街を見下ろす巨大な中世の要塞。ケーブルカーで登れる</div><a class="img-link"
+                        href="https://www.google.com/search?q=Hohensalzburg+Fortress+Salzburg&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">ハルシュタット <span class="star">⭐⭐</span></div>
+                    <div class="card-desc">湖に映る世界で最も美しい村の1つ・UNESCO世界遺産。ザルツブルクからバス＋フェリーで約2h。全家晦楊の絵本世界</div><a
+                        class="img-link"
+                        href="https://www.google.com/search?q=Hallstatt+Austria+lake+village+UNESCO&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">ミラベル庭園</div>
+                    <div class="card-desc">「サウンド・オブ・ミュージック」ロケ地。子どもが走り回れる美しい庭園</div><a class="img-link"
+                        href="https://www.google.com/search?q=Mirabell+Gardens+Salzburg+Sound+of+Music&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">旧市街散策</div>
+                    <div class="card-desc">モーツァルト生家・世界遺産の歴史的建物。コンパクトで歩きやすい</div><a class="img-link"
+                        href="https://www.google.com/search?q=Salzburg+old+town+Getreidegasse&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Switzerland -->
+        <div id="ch" class="country-section">
+            <div class="country-header">
+                <span class="flag">🇨🇭</span>
+                <h2>スイス</h2>
+                <span class="nights">2泊（物価高のため短め）</span>
+            </div>
+            <div class="city-label">ルツェルン・チューリッヒ周辺</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title">カペル橋（ルツェルン）</div>
+                    <div class="card-desc">花で飾られた14世紀の木造橋。湖の青と山のコントラストが絶景</div><a class="img-link"
+                        href="https://www.google.com/search?q=Kapellbrucke+Lucerne+Switzerland&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">スイス交通博物館 <span class="star">⭐</span></div>
+                    <div class="card-desc">汽車・飛行機・ロケットが勢ぞろい。子ども向けシミュレーターが人気</div><a class="img-link"
+                        href="https://www.google.com/search?q=Swiss+Museum+of+Transport+Lucerne&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ピラトゥス山またはリギ山</div>
+                    <div class="card-desc">ケーブルカーでアルプスの絶景へ。夏でも山頂は涼しい</div><a class="img-link"
+                        href="https://www.google.com/search?q=Mount+Pilatus+cable+car+Lucerne&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">チューリッヒ旧市街</div>
+                    <div class="card-desc">宝石のような美しい町並み。リマト川沿い散歩が気持ちよい</div><a class="img-link"
+                        href="https://www.google.com/search?q=Zurich+old+town+Limmat+river&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">グリンデルワールト <span class="star">⭐⭐</span></div>
+                    <div class="card-desc">ユングフラウ（UNESCO）からのアルプス全景。登山鉄道で汷上4000mへ。子どもに平生忘れない一界の惑樹</div><a
+                        class="img-link"
+                        href="https://www.google.com/search?q=Grindelwald+Alps+snow+mountain+Jungfrau&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ベルニナ急行（ベルニナ線） <span class="star">⭐⭐</span></div>
+                    <div class="card-desc">
+                        クール→サン・モリッツ→ティラーノ（イタリア）だからスイス→イタリアの移動そのもに活用可能・UNESCO世界遺産鉄道。アルプス越えの絶景と重力斶図5kmは全家厄悳。ベルニナコースを移動ルートに組み込むのがおすすめ
+                    </div><a class="img-link"
+                        href="https://www.google.com/search?q=Bernina+Express+train+Switzerland+UNESCO+Alps&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">氷河特急（グラーシャー・エクスプレス） <span class="star">⭐⭐</span></div>
+                    <div class="card-desc">
+                        ツェルマット↔サン・モリッツを紏富8hかけて走るUNESCO世界遺産鉄道。291のトンネル・91の橋・グランドキャニオン。ツェルマットへ寄る場合はセットで必乗り</div><a
+                        class="img-link"
+                        href="https://www.google.com/search?q=Glacier+Express+train+Switzerland+UNESCO+Zermatt&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ベルン旧市街</div>
+                    <div class="card-desc">スイスの首都・世界遺産。アーケードの商店街とバラ島を見渡す絶景テラスが子連れに岡</div><a class="img-link"
+                        href="https://www.google.com/search?q=Bern+old+town+UNESCO+arcades&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ラインの滹（ラインファル）</div>
+                    <div class="card-desc">ヨーロッパ最大級の滹。幅150mで水しぶきがダイナミック。ルツェルンからレンタ芸船で接近できる</div><a class="img-link"
+                        href="https://www.google.com/search?q=Rhine+Falls+Schaffhausen+Switzerland&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+            </div>
+            <div class="note">⚠️ スイスは物価が高いため食事・お土産は予算に注意。スーパー（Migros・Coop）活用がおすすめ。</div>
+        </div>
+
+        <!-- Italy stopover: Ravenna/Assisi -->
+        <div class="country-section" style="background: linear-gradient(135deg, #fdf8f0, #fffbf5);">
+            <div class="country-header" style="background: linear-gradient(135deg, #b45309, #92400e);">
+                <span class="flag">🇮🇹</span>
+                <h2>イタリア途中候補 <span style="font-size:1rem;opacity:0.85">（イタリア国内暠娘地）</span></h2>
+                <span class="nights">途中下車候補・ 各城間 1泊</span>
+            </div>
+
+            <div class="city-label stopover">途中下車候補：ラヴェンナ（ヴェネツィア→フィレンツェ途中）</div>
+            <div class="cards">
+                <div class="card stopover">
+                    <div class="card-title">ラヴェンナのモザイク <span class="star">⭐⭐</span></div>
+                    <div class="card-desc">5世紀の初期キリスト教モザイクが色鮮かに残る複数の教会・UNESCO世界遺産。7世紀を越えた輝きは11歳に魔法的な印象を与える</div><a
+                        class="img-link"
+                        href="https://www.google.com/search?q=Ravenna+mosaics+UNESCO+Byzantine&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">ボローニャ（食の都）</div>
+                    <div class="card-desc">ボローニャーゼとトルテリーニの発祥地。エミリア地方の美食をパスタにやけ騰食される街。高塔も子どもに人気</div><a class="img-link"
+                        href="https://www.google.com/search?q=Bologna+Italy+towers+food+pasta&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+            </div>
+
+            <div class="city-label stopover">途中下車候補：アッシジ＆オルヴィエート（フィレンツェ→ローマ途中）</div>
+            <div class="cards">
+                <div class="card stopover">
+                    <div class="card-title">アッシジの聖フランチェスコ寺院群 <span class="star">⭐</span></div>
+                    <div class="card-desc">丘の上の白い特徴的な小都市・UNESCO世界遺産。フランチェスコ寺のフレスコ宮画と中市街の鵿図に感動</div><a class="img-link"
+                        href="https://www.google.com/search?q=Assisi+Basilica+San+Francesco+UNESCO+Italy&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">オルヴィエート（岩山の中世都市）</div>
+                    <div class="card-desc">断崖の上に立つ中世の小都市。大聖堂のファサードが圧巻。ローマから電車+バスで日帰り可</div><a class="img-link"
+                        href="https://www.google.com/search?q=Orvieto+Italy+hilltop+cathedral&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">シエナ <span class="star">⭐⭐</span></div>
+                    <div class="card-desc">
+                        中世の街並みがほぼ完全に保存・UNESCO世界遺産。カンポ広場の扁形が美しく、フィレンツェから電車1.5h。トスカーナのゼアを感じる浮かび上がる杏色の山丁。パケリノ</div><a
+                        class="img-link"
+                        href="https://www.google.com/search?q=Siena+Italy+Piazza+del+Campo+UNESCO&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">サン・ジミニャーノ</div>
+                    <div class="card-desc">塔が林立するUNESCO小都市。シエナからバス1h。、20まわりの塔』の空を見上げる期待感は11歳にインパクト大</div><a
+                        class="img-link"
+                        href="https://www.google.com/search?q=San+Gimignano+towers+Tuscany+UNESCO&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+            </div>
+            <div class="note">💡 ラヴェンナはパスタとモザイクの両方が楽しめる穷極の途中下車地。アッシジはフィレンツェから電車+バスで約 2h。オルヴィエートはローマから電車1.5hで日帰りできる。
+            </div>
+        </div>
+
+        <!-- Italy -->
+        <div id="it" class="country-section">
+            <div class="country-header">
+                <span class="flag">🇮🇹</span>
+                <h2>イタリア</h2>
+                <span class="nights">ヴェネツィア2泊・フィレンツェ2泊・ローマ3泊</span>
+            </div>
+
+            <div class="city-label stopover">途中下車候補：ヴェローナ（ヴェネツィア→フィレンツェ間 約1h）</div>
+            <div class="cards">
+                <div class="card stopover">
+                    <div class="card-title">アレーナ（ローマ円形闘技場）</div>
+                    <div class="card-desc">コロッセオより保存状態が良く、夏は野外オペラ会場にもなる</div><a class="img-link"
+                        href="https://www.google.com/search?q=Verona+Arena+amphitheater&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">ジュリエットの家</div>
+                    <div class="card-desc">有名なバルコニーで写真撮影。ロミオとジュリエットの舞台</div><a class="img-link"
+                        href="https://www.google.com/search?q=Juliet+House+Verona+balcony&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+            </div>
+
+            <div class="city-label">ヴェネツィア（2泊）</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title">サン・マルコ広場 & 大聖堂</div>
+                    <div class="card-desc">水の都の中心地。鳩と子どもが遊ぶ非日常的な広場</div><a class="img-link"
+                        href="https://www.google.com/search?q=St+Marks+Square+Venice+pigeons&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ゴンドラ体験 <span class="star">⭐</span></div>
+                    <div class="card-desc">30〜40分。迷路のような運河の景色。子どもが大喜び</div><a class="img-link"
+                        href="https://www.google.com/search?q=Venice+gondola+canal+ride&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ムラーノ島</div>
+                    <div class="card-desc">水上バス10分。職人がガラスを吹く実演が見られる</div><a class="img-link"
+                        href="https://www.google.com/search?q=Murano+glass+blowing+Venice&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ドゥカーレ宮殿</div>
+                    <div class="card-desc">秘密の通路など11歳に人気。中世ヴェネツィアの政庁</div><a class="img-link"
+                        href="https://www.google.com/search?q=Doges+Palace+Venice+interior&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">リアルト橋</div>
+                    <div class="card-desc">ヴェネツィア最古の橋。橋の上の市場と運河の眺めが絶景。写真スポットとしても鉄板</div><a class="img-link"
+                        href="https://www.google.com/search?q=Rialto+Bridge+Venice&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+            </div>
+
+            <div class="city-label">フィレンツェ（2泊）</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title">ピアッツァーレ・ミケランジェロ</div>
+                    <div class="card-desc">丘の上の無料展望台。フィレンツェ全景が見渡せる</div><a class="img-link"
+                        href="https://www.google.com/search?q=Piazzale+Michelangelo+Florence+view&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ポンテヴェッキオ</div>
+                    <div class="card-desc">宝石店が並ぶ中世の橋。写真映え◎</div><a class="img-link"
+                        href="https://www.google.com/search?q=Ponte+Vecchio+Florence+sunset&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ボーボリ庭園 <span class="star">⭐</span></div>
+                    <div class="card-desc">広大な庭園。子どもが自由に走り回れる</div><a class="img-link"
+                        href="https://www.google.com/search?q=Boboli+Gardens+Florence&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ドゥオーモ（大聖堂）</div>
+                    <div class="card-desc">圧巻のクーポラ。外観だけでも十分迫力あり</div><a class="img-link"
+                        href="https://www.google.com/search?q=Florence+Cathedral+Duomo+exterior&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ウフィツィ美術館</div>
+                    <div class="card-desc">ボッティチェリの「ヴィーナスの誕生」等世界的名画が集結。子連れは事前オンライン予約が必須</div><a class="img-link"
+                        href="https://www.google.com/search?q=Uffizi+Gallery+Florence+interior&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">サンタ・クローチェ広場</div>
+                    <div class="card-desc">ガリレオ・ミケランジェロの墓。広い空間で子どもが走り回れる。周辺のレザー店巡りも楽しい</div><a class="img-link"
+                        href="https://www.google.com/search?q=Santa+Croce+Square+Florence&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+            </div>
+
+            <div class="city-label daytrip">日帰り候補：ピサ（フィレンツェから電車 約1h）</div>
+            <div class="cards">
+                <div class="card daytrip">
+                    <div class="card-title">ピサの斜塔 <span class="star">⭐</span></div>
+                    <div class="card-desc">傾いた塔を「支えているポーズ」の写真が定番。子どもも大喜び</div><a class="img-link"
+                        href="https://www.google.com/search?q=Leaning+Tower+of+Pisa+fun+pose&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card daytrip">
+                    <div class="card-title">奇跡の広場</div>
+                    <div class="card-desc">斜塔・大聖堂・洗礼堂が並ぶ白亜の広場。芝生で子どもが遊べる</div><a class="img-link"
+                        href="https://www.google.com/search?q=Piazza+dei+Miracoli+Pisa&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+            </div>
+
+            <div class="city-label">ローマ（3泊）</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title">コロッセオ & ローマ浴場跡</div>
+                    <div class="card-desc">2000年前の円形闘技場。11歳には歴史の生きた教科書</div><a class="img-link"
+                        href="https://www.google.com/search?q=Rome+Colosseum+exterior+blue+sky&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ヴァティカン美術館 & システィーナ礼拝堂</div>
+                    <div class="card-desc">ミケランジェロの天井画は必見。要事前予約</div><a class="img-link"
+                        href="https://www.google.com/search?q=Sistine+Chapel+ceiling+Michelangelo&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">トレヴィの泉</div>
+                    <div class="card-desc">コインを投げると再訪できる伝説の泉。夜のライトアップが幻想的</div><a class="img-link"
+                        href="https://www.google.com/search?q=Trevi+Fountain+Rome+night&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ボルゲーゼ公園 <span class="star">⭐</span></div>
+                    <div class="card-desc">レンタル自転車・ボート・ミニ列車あり。4歳に最適</div><a class="img-link"
+                        href="https://www.google.com/search?q=Villa+Borghese+Park+Rome+children&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ナヴォーナ広場</div>
+                    <div class="card-desc">バロック様式の噴水が並ぶ広場。ジェラートを食べながらのんびり</div><a class="img-link"
+                        href="https://www.google.com/search?q=Piazza+Navona+Rome+fountain&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">パンテオン</div>
+                    <div class="card-desc">2000年前の神殿がほぼ完全な形で残存。直径43mのドームは入場無料〜低価格。11歳に大インパクト</div><a class="img-link"
+                        href="https://www.google.com/search?q=Pantheon+Rome+interior+dome&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">フォロ・ロマーノ（ローマ遺跡公園）</div>
+                    <div class="card-desc">コロッセオ隣の古代ローマ広場跡。コロッセオとセット券で効率よく見られる</div><a class="img-link"
+                        href="https://www.google.com/search?q=Roman+Forum+Palatine+Hill&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+            </div>
+            <div class="excluded"><strong>❌ ナポリは今回除外</strong>ローマから電車1.5hで行けるが：市内が混雑・治安不安で4歳連れには負担大 /
+                ポンペイ日帰りは往復＋見学で丸1日かかりハード / アマルフィ海岸は道が険しく小さい子連れ向けでない。→ 次回イタリア旅行の候補としてキープ。</div>
+        </div>
+
+        <!-- Spain -->
+        <div id="es" class="country-section">
+            <div class="country-header">
+                <span class="flag">🇪🇸</span>
+                <h2>スペイン</h2>
+                <span class="nights">バルセロナ 3泊</span>
+            </div>
+            <div class="city-label">バルセロナ</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title">サグラダ・ファミリア</div>
+                    <div class="card-desc">ガウディの大聖堂。内部は色ガラスで光り輝く。要事前予約</div><a class="img-link"
+                        href="https://www.google.com/search?q=Sagrada+Familia+Barcelona+interior&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">グエル公園 <span class="star">⭐</span></div>
+                    <div class="card-desc">カラフルなモザイクタイルの公園。子どもが喜ぶ造形美</div><a class="img-link"
+                        href="https://www.google.com/search?q=Park+Guell+Barcelona+mosaic+terrace&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">バルセロナ水族館 <span class="star">⭐</span></div>
+                    <div class="card-desc">地中海最大クラス。80mのトンネル水槽が圧巻。4歳に大人気</div><a class="img-link"
+                        href="https://www.google.com/search?q=Barcelona+Aquarium+tunnel&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">バルセロネータ海岸 <span class="star">⭐</span></div>
+                    <div class="card-desc">市内から徒歩圏の砂浜。海水浴・砂遊びで子どもが大満足</div><a class="img-link"
+                        href="https://www.google.com/search?q=Barceloneta+Beach+Barcelona+summer&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">カンプ・ノウ（FCバルセロナ）</div>
+                    <div class="card-desc">世界最大クラスのサッカースタジアム。スタジアムツアーあり</div><a class="img-link"
+                        href="https://www.google.com/search?q=Camp+Nou+Barcelona+stadium&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ティビダボ遊園地 <span class="star">⭐</span></div>
+                    <div class="card-desc">山頂の遊園地。アトラクション・バルセロナ全景・歴史ある建物が子どもに大人気</div><a class="img-link"
+                        href="https://www.google.com/search?q=Tibidabo+amusement+park+Barcelona&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">モンジュイック城</div>
+                    <div class="card-desc">港を見下ろす丘の上の小さな城。無料入場。子どもが走り回れる広場、夢のような眺め</div><a class="img-link"
+                        href="https://www.google.com/search?q=Montjuic+Castle+Barcelona+view&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- South France stopover -->
+        <div class="country-section" style="background: linear-gradient(135deg, #fef9f0, #fff8f0);">
+            <div class="country-header" style="background: linear-gradient(135deg, #d97706, #b45309);">
+                <span class="flag">🇫🇷</span>
+                <h2>南フランス <span style="font-size:1rem;opacity:0.85">（バルセロナ→パリ途中）</span></h2>
+                <span class="nights">途中下車候補・ 1～2泊</span>
+            </div>
+
+            <div class="city-label stopover">円形園場候補：カルカソンヌ（バルセロナ→TGV 1.5h）</div>
+            <div class="cards">
+                <div class="card stopover">
+                    <div class="card-title">カルカソンヌ城忎都市 <span class="star">⭐⭐</span></div>
+                    <div class="card-desc">中世の城壁が完全な形で残る世界遺産都市。トンネルをはじめ城壁の中の迷路は子どもに大インパクト</div><a class="img-link"
+                        href="https://www.google.com/search?q=Carcassonne+medieval+walled+city+France&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+            </div>
+
+            <div class="city-label stopover">途中下車候補：アヴィニョン & ポン・デュ・ガール（カルカソンヌから鉄車 1h / バルセロナからTGV 3h）</div>
+            <div class="cards">
+                <div class="card stopover">
+                    <div class="card-title">ポン・デュ・ガール <span class="star">⭐⭐</span></div>
+                    <div class="card-desc">ローマ時代の水道橋・UNESCO世界遺産。高さ49mの石造り3層アーチ。橋の下の川で水遙びもでき〈4歳にも大人気</div><a
+                        class="img-link"
+                        href="https://www.google.com/search?q=Pont+du+Gard+Roman+aqueduct+France&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">法王庭e（アヴィニョン）</div>
+                    <div class="card-desc">アヴィニョン旧市街の中心。巨大な宮殿跡・UNESCO世界遺産。ごたごた場内は子どもが大喜び</div><a class="img-link"
+                        href="https://www.google.com/search?q=Palais+des+Papes+Avignon+UNESCO&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">アヴィニョン橋（ポンダヴィニョン）</div>
+                    <div class="card-desc">唄のあの流行歌「アヴィニョンの橋で」の屑になった橋。もとは全車22間だったが今は4間・影写スポット</div><a class="img-link"
+                        href="https://www.google.com/search?q=Pont+d+Avignon+broken+bridge+France&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">ニームのローマ円形競技場</div>
+                    <div class="card-desc">コロッセオより保存状態が良いローマ円形競技場。今でもコンサートが開かれる。入場料も安く子どもにインパクト大</div><a
+                        class="img-link"
+                        href="https://www.google.com/search?q=Nimes+amphitheater+Roman+arena+France&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">オランジュの古代円形劇場 <span class="star">⭐</span></div>
+                    <div class="card-desc">アヴィニョンから電車30分・UNESCOローマ達所。保存状態最良級の円形劇場と凱利門。コイントウケガヨイ抡拶感。11歳必見スポット</div><a
+                        class="img-link"
+                        href="https://www.google.com/search?q=Orange+Roman+Theatre+UNESCO+France&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+            </div>
+            <div class="note">💡
+                バルセロナ→カルカソンヌ（1.5h）→アヴィニョン（1h）→パリ（2.5h）のルートが最実用的。アヴィニョン1泊でポン・デュ・ガールがたっぷり楽しめる。レンタカーがあると更に機動的。</div>
+        </div>
+
+        <!-- France -->
+        <div id="fr" class="country-section">
+            <div class="country-header">
+                <span class="flag">🇫🇷</span>
+                <h2>フランス</h2>
+                <span class="nights">パリ 5〜6泊（Airbnb）</span>
+            </div>
+
+            <div class="city-label stopover">途中下車候補：リヨン（バルセロナ→パリ間 約3h）</div>
+            <div class="cards">
+                <div class="card stopover">
+                    <div class="card-title">フルヴィエールの丘 & バジリカ聖堂</div>
+                    <div class="card-desc">ロープウェイで登れる丘。リヨンの街が一望できる</div><a class="img-link"
+                        href="https://www.google.com/search?q=Lyon+Fourviere+Basilica+view&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">旧市街（プレスキール）</div>
+                    <div class="card-desc">ユネスコ世界遺産。「トラブール」と呼ばれる隠し通路が探検気分</div><a class="img-link"
+                        href="https://www.google.com/search?q=Lyon+old+town+traboule+Vieux+Lyon&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+            </div>
+
+            <div class="city-label">パリ（5〜6泊）</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title">ディズニーランド・パリ <span class="star">⭐⭐</span></div>
+                    <div class="card-desc">RER Aで約40分。2〜3日確保。4歳・11歳ともに大満足のご褒美</div><a class="img-link"
+                        href="https://www.google.com/search?q=Disneyland+Paris+castle+summer&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">エッフェル塔</div>
+                    <div class="card-desc">夜のライトアップは毎時5分間キラキラ光る。パリのシンボル</div><a class="img-link"
+                        href="https://www.google.com/search?q=Eiffel+Tower+Paris+night+lights&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ルーブル美術館</div>
+                    <div class="card-desc">モナリザ・ミイラ・武器コレクションなど子どもが楽しめる展示多数</div><a class="img-link"
+                        href="https://www.google.com/search?q=Louvre+Museum+Paris+pyramid&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">サクレ・クール & モンマルトル</div>
+                    <div class="card-desc">丘の上の白い大聖堂。坂道の街並みが可愛くSNS映え</div><a class="img-link"
+                        href="https://www.google.com/search?q=Sacre+Coeur+Montmartre+Paris&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">リュクサンブール公園 <span class="star">⭐</span></div>
+                    <div class="card-desc">ポニー乗り・人形劇・ミニヨットで遊べる。4歳に特におすすめ</div><a class="img-link"
+                        href="https://www.google.com/search?q=Luxembourg+Garden+Paris+children+puppet&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ヴェルサイユ宮殿</div>
+                    <div class="card-desc">日帰り遠足に◎。庭園が広大で子どもが走り回れる</div><a class="img-link"
+                        href="https://www.google.com/search?q=Palace+of+Versailles+garden+fountain&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">オルセー美術館</div>
+                    <div class="card-desc">印象派絵画の宝庫。ルーブルより小さな子連れで1日で回れる規模感。モネの睡蓮は必見（要予約）</div><a class="img-link"
+                        href="https://www.google.com/search?q=Musee+d+Orsay+Paris+interior&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ノートルダム大聖堂（外観）</div>
+                    <div class="card-desc">復原工事中だが外観からの屋根・ガーゴイル番小屋は必見。シテ島散策の起点としてもとても気持ちよいエリア</div><a class="img-link"
+                        href="https://www.google.com/search?q=Notre+Dame+Cathedral+Paris+exterior&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">バトームッシュ（セーヌ川クルーズ） <span class="star">⭐</span></div>
+                    <div class="card-desc">エッフェル塔・ノートルダム・ルーブルを川から眺める1時間のクルーズ。夜も昼もおすすめ。4歳も喜ぶ</div><a class="img-link"
+                        href="https://www.google.com/search?q=Bateaux+Mouches+Paris+Seine+cruise&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ポンピドゥー・センター（外観＆広場）</div>
+                    <div class="card-desc">外側にパイプが剥き出しの奇抜な近代美術館。広場でのパフォーマーが子ども大喜び</div><a class="img-link"
+                        href="https://www.google.com/search?q=Pompidou+Centre+Paris&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+            </div>
+
+            <div class="city-label daytrip">1泊遠足候補：モン・サン＝ミッシェル（パリから電車＋バス 約3.5h）</div>
+            <div class="cards">
+                <div class="card daytrip">
+                    <div class="card-title">モン・サン＝ミッシェル <span class="star">⭐⭐</span></div>
+                    <div class="card-desc">海に浮かぶ岩礁修道院。満潮時は完全に海に囲まれる絶景。世界中の子どもが憧れる「お城」。1泊推奨</div><a class="img-link"
+                        href="https://www.google.com/search?q=Mont+Saint-Michel+tidal+island+France&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card daytrip">
+                    <div class="card-title">湾岸の干潟ウォーキング</div>
+                    <div class="card-desc">ガイドツアーで引き潮の砂浜を歩いて島に接近できる。子どもに大冒険体験。長靴が必要</div><a class="img-link"
+                        href="https://www.google.com/search?q=Mont+Saint+Michel+bay+walk+tidal+flat&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+            </div>
+            <div class="note">💡 パリから日帰りも可能だが、夕暮れ・夜のライトアップが最大の見せ場。Airbnb連泊中に1泊だけ外泊するイメージで計画を。TGV+シャトルバスで現地へ。</div>
+        </div>
+
+        <!-- Belgium / UK entry stopover -->
+        <div class="country-section" style="background: linear-gradient(135deg, #f0f4ff, #eef2ff);">
+            <div class="country-header" style="background: linear-gradient(135deg, #4f46e5, #7c3aed);">
+                <span class="flag">🇧🇪</span>
+                <h2>ベルギー / UK入り口 <span style="font-size:1rem;opacity:0.85">（パリ→ロンドン途中）</span></h2>
+                <span class="nights">途中下車候補・1泊</span>
+            </div>
+
+            <div class="city-label stopover">途中下車候補：ブルッヘ（中世の宝石・ベルギー）</div>
+            <div class="cards">
+                <div class="card stopover">
+                    <div class="card-title">ブルッヘ歴史地区 <span class="star">⭐⭐</span></div>
+                    <div class="card-desc">中世の運河・石番の広場・ゴシック建築がソックり保存された世界遺産都市。ヨーロッパで最も美しい城市の1つと言われる</div><a
+                        class="img-link"
+                        href="https://www.google.com/search?q=Bruges+Belgium+medieval+canals+UNESCO&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">運河ボートクルーズ <span class="star">⭐</span></div>
+                    <div class="card-desc">中世の電気屋が並ぶ運河をボートでのんびり行く。4歳にも大人気。30分せんで洗本の世界</div><a class="img-link"
+                        href="https://www.google.com/search?q=Bruges+canal+boat+tour+Belgium&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card stopover">
+                    <div class="card-title">マルクト広場 & ベルフリー</div>
+                    <div class="card-desc">ベルギーワッフルが機に山盛り。チョコレート・ジェラート・フライが澂る広場。ベルギー初インプレッション大</div><a class="img-link"
+                        href="https://www.google.com/search?q=Bruges+Markt+square+waffles+Belgium&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+            </div>
+
+            <div class="city-label stopover">途中下車候補：カンタベリー（ロンドンのギリギリ败）</div>
+            <div class="cards">
+                <div class="card stopover">
+                    <div class="card-title">カンタベリー大聖堂</div>
+                    <div class="card-desc">イングランド最古の大聖堂・UNESCO世界遺産。ユーロスターでロンドンから終60min。中世のステンドグラスが翠美</div><a
+                        class="img-link"
+                        href="https://www.google.com/search?q=Canterbury+Cathedral+UNESCO+England&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+            </div>
+            <div class="note">💡 ブルッヘはパリからユーロスター絆90min+鉄道で1h程度。ロンドンになる前に1泊割り込むのも気持ちよい。カンタベリーはロンドンからの決日帰りで十分満喫。</div>
+        </div>
+
+        <!-- UK -->
+        <div id="gb" class="country-section">
+            <div class="country-header">
+                <span class="flag">🇬🇧</span>
+                <h2>イギリス</h2>
+                <span class="nights">ロンドン 9〜10泊（Airbnb・ここから帰国）</span>
+            </div>
+            <div class="city-label">ロンドン</div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-title">自然史博物館 <span class="star">⭐</span></div>
+                    <div class="card-desc">🎉 入場無料。恐竜・鉱物・生物の標本が充実。子どもに超人気</div><a class="img-link"
+                        href="https://www.google.com/search?q=Natural+History+Museum+London+dinosaur+hall&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">科学博物館 <span class="star">⭐</span></div>
+                    <div class="card-desc">🎉 入場無料。宇宙船・蒸気機関車・体験型展示が豊富。11歳に◎</div><a class="img-link"
+                        href="https://www.google.com/search?q=Science+Museum+London+interactive&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ロンドン塔 & タワーブリッジ</div>
+                    <div class="card-desc">王室の宝石・武器・歴史の展示。橋の中も歩ける</div><a class="img-link"
+                        href="https://www.google.com/search?q=Tower+of+London+Tower+Bridge&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">バッキンガム宮殿（衛兵交代）</div>
+                    <div class="card-desc">毎日11時頃（夏期）の儀式。カラフルな制服が子どもに大人気</div><a class="img-link"
+                        href="https://www.google.com/search?q=Buckingham+Palace+Changing+Guard&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ハリー・ポッター スタジオツアー <span class="star">⭐⭐</span></div>
+                    <div class="card-desc">ロンドン近郊・ワトフォード。映画のセット・魔法の杖体験。11歳に最高のご褒美</div><a class="img-link"
+                        href="https://www.google.com/search?q=Harry+Potter+Warner+Bros+Studio+Tour+London&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ハイドパーク</div>
+                    <div class="card-desc">広大な公園。ペダルボート・乗馬・散歩。Airbnb拠点の休日に◎</div><a class="img-link"
+                        href="https://www.google.com/search?q=Hyde+Park+London+Serpentine&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ロンドン・アイ</div>
+                    <div class="card-desc">テムズ川沿いの大観覧車。ロンドン全景が一望できる</div><a class="img-link"
+                        href="https://www.google.com/search?q=London+Eye+Thames+view&tbm=isch" target="_blank">🔍
+                        画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">コヴェント・ガーデン <span class="star">⭐</span></div>
+                    <div class="card-desc">大道誕さんのモーション・ストリートパフォーマー・マーケット。無料頚濮で子ども大喜び。食事も蓄食も充実</div><a class="img-link"
+                        href="https://www.google.com/search?q=Covent+Garden+London+street+performers&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ウィンザー城 🏰</div>
+                    <div class="card-desc">日帰り遠足に◎。女王の居城。ガード交代式・宿泊設備・宮殿と南橋公園が小さな子にも大人気</div><a class="img-link"
+                        href="https://www.google.com/search?q=Windsor+Castle+London+day+trip&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">ストーンヘンジ（日帰り）</div>
+                    <div class="card-desc">ロンドンからバスツアーで約1.5h。先史時代の巾立岩羡。落日も出画も素晴らしい神秘的怎囲気は11歳必見</div><a class="img-link"
+                        href="https://www.google.com/search?q=Stonehenge+travel+London+day+trip&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">バース（ローマ温泉都市） <span class="star">⭐</span></div>
+                    <div class="card-desc">
+                        ストーンヘンジとセットで日帰りも可能・UNESCO世界遺産。ローマ時代の温泉浴場跡が今に保存。ジェーン・オースティンゆかりの舐はウィットが小さい子どもにも調度良</div><a
+                        class="img-link"
+                        href="https://www.google.com/search?q=Bath+Roman+Baths+UNESCO+England+city&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">キュー・ガーデンズ</div>
+                    <div class="card-desc">世界遺産の植物園。広くて子どもが自由に走り回れる</div><a class="img-link"
+                        href="https://www.google.com/search?q=Kew+Gardens+London&tbm=isch" target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">大英博物館 <span class="star">⭐</span></div>
+                    <div class="card-desc">🎉 入場無料。ロゼッタ・ストーン・エジプトのミイラ・膨大なコレクション。楽しめる小子向け1日コース</div><a class="img-link"
+                        href="https://www.google.com/search?q=British+Museum+London+interior&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+                <div class="card">
+                    <div class="card-title">グリニッジ天文台 & クリッパー船</div>
+                    <div class="card-desc">本初子午線の地。山の上からテムズ川沿いロンドンの全景。クリッパー船も下で見学可</div><a class="img-link"
+                        href="https://www.google.com/search?q=Greenwich+Observatory+London+view&tbm=isch"
+                        target="_blank">🔍 画像を見る</a>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>🌍 ヨーロッパ家族旅行 2026 ／ 作成：2026年3月</p>
+        <p style="margin-top:8px; font-size:0.8rem;">⭐ = 特に子連れ向けおすすめ ／ ⭐⭐ = 絶対おすすめ（外せない） ／ 🚉 = 途中下車候補 ／ 🌅 = 日帰り候補</p>
+    </footer>
+
+    <style>
+        /* ===== 世界遺産バッジ ===== */
+        .heritage-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            background: #fff8e1;
+            color: #8B6914;
+            border: 1px solid #f0d060;
+            border-radius: 10px;
+            padding: 1px 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            margin: 2px 0 4px;
+            width: fit-content;
+        }
+
+        /* ===== 採用/スキップ ステータス ===== */
+        .card-actions {
+            display: flex;
+            gap: 6px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn-adopt,
+        .btn-skip,
+        .btn-reset {
+            border: none;
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all .15s;
+            font-family: inherit;
+        }
+
+        .btn-adopt {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .btn-skip {
+            background: #fce4ec;
+            color: #c62828;
+        }
+
+        .btn-adopt:hover {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .btn-skip:hover {
+            background: #c62828;
+            color: white;
+        }
+
+        /* アクティブ状態 */
+        .card.adopted {
+            border-left-color: #2e7d32 !important;
+            background: #f1faf2;
+        }
+
+        .card.adopted .btn-adopt {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .card.skipped {
+            border-left-color: #c62828 !important;
+            background: #fff5f5;
+            opacity: 0.65;
+        }
+
+        .card.skipped .btn-skip {
+            background: #c62828;
+            color: white;
+        }
+
+        /* カウンターバッジ（nav右端） */
+        #status-bar {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0 12px;
+            white-space: nowrap;
+            font-size: 0.82rem;
+        }
+
+        .count-badge {
+            border-radius: 12px;
+            padding: 2px 10px;
+            font-weight: 700;
+        }
+
+        .count-badge.adopted {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .count-badge.skipped {
+            background: #fce4ec;
+            color: #c62828;
+        }
+
+        #btn-reset-all {
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 12px;
+            padding: 2px 10px;
+            font-size: 0.75rem;
+            color: #888;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        #btn-reset-all:hover {
+            background: #f0f0f0;
+        }
+
+        #share-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 10px 20px;
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            flex-wrap: wrap;
+        }
+
+        #btn-share-url {
+            background: linear-gradient(135deg, #3b82f6, #6366f1);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            padding: 5px 14px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: inherit;
+            transition: opacity 0.2s;
+        }
+
+        #btn-share-url:hover {
+            opacity: 0.85;
+        }
+
+        #btn-download {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
+            padding: 5px 14px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background 0.2s;
+        }
+
+        #btn-download:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        #share-msg {
+            font-size: 0.78rem;
+            color: #86efac;
+            font-weight: 600;
+        }
+    </style>
+
+    <script>
+        const STORAGE_KEY = 'europe2026_spots';
+
+        function getStates() {
+            try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || {}; }
+            catch { return {}; }
+        }
+
+        function saveStates(states) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(states));
+        }
+
+        function cardKey(card) {
+            return card.querySelector('.card-title')?.textContent?.trim().slice(0, 30) || Math.random();
+        }
+
+        function applyState(card, state) {
+            card.classList.remove('adopted', 'skipped');
+            if (state === 'adopted') card.classList.add('adopted');
+            if (state === 'skipped') card.classList.add('skipped');
+        }
+
+        function updateCounter() {
+            const states = getStates();
+            const vals = Object.values(states);
+            document.getElementById('cnt-adopted').textContent = '✅ 採用 ' + vals.filter(v => v === 'adopted').length;
+            document.getElementById('cnt-skipped').textContent = '❌ 興味なし ' + vals.filter(v => v === 'skipped').length;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const states = getStates();
+
+            // カウンターをnavに追加
+            const nav = document.querySelector('nav');
+            const bar = document.createElement('div');
+            bar.id = 'status-bar';
+            bar.innerHTML = `
+      <span class="count-badge adopted" id="cnt-adopted">✅ 採用 0</span>
+      <span class="count-badge skipped" id="cnt-skipped">❌ 興味なし 0</span>
+      <button id="btn-reset-all">全リセット</button>`;
+            nav.appendChild(bar);
+
+            document.getElementById('btn-reset-all').addEventListener('click', () => {
+                if (!confirm('全てのステータスをリセットしますか？')) return;
+                localStorage.removeItem(STORAGE_KEY);
+                document.querySelectorAll('.card').forEach(c => applyState(c, null));
+                updateCounter();
+            });
+
+            // 各カードにボタンを追加
+            document.querySelectorAll('.card').forEach(card => {
+                const key = cardKey(card);
+                applyState(card, states[key]);
+
+                const actions = document.createElement('div');
+                actions.className = 'card-actions';
+                actions.innerHTML = `
+        <button class="btn-adopt">✅ 採用</button>
+        <button class="btn-skip">❌ 興味なし</button>`;
+                card.appendChild(actions);
+
+                actions.querySelector('.btn-adopt').addEventListener('click', () => {
+                    const s = getStates();
+                    s[key] = s[key] === 'adopted' ? null : 'adopted';
+                    if (s[key] === null) delete s[key];
+                    saveStates(s);
+                    applyState(card, s[key] || null);
+                    updateCounter();
+                });
+
+                actions.querySelector('.btn-skip').addEventListener('click', () => {
+                    const s = getStates();
+                    s[key] = s[key] === 'skipped' ? null : 'skipped';
+                    if (s[key] === null) delete s[key];
+                    saveStates(s);
+                    applyState(card, s[key] || null);
+                    updateCounter();
+                });
+
+            });
+
+            updateCounter();
+
+            // ===== 世界遺産バッジ自動付与 =====
+            const UNESCO = [
+                '旧市街広場', 'プラハ城', 'カレル橋', 'クトナー・ホラ', 'チェスキー・クルムロフ',
+                'シェーンブルン', 'ホーフブルク', 'ベルヴェデーレ',
+                'シュテファン',
+                'ホーエンザルツブルク', 'ミラベル', '旧市街散策', 'ハルシュタット',
+                'ベルニナ急行', '氷河特急', 'ベルン旧市街',
+                'サン・マルコ', 'ドゥカーレ', 'リアルト', 'ムラーノ',
+                'ポンテヴェッキオ', 'ボーボリ', 'ドゥオーモ', 'ウフィツィ',
+                'コロッセオ', 'ヴァティカン', 'トレヴィ', 'ナヴォーナ', 'パンテオン', 'フォロ・ロマーノ',
+                'ピサの斜塔', '奇跡の広場',
+                'ラヴェンナ', 'アッシジ', 'シエナ', 'サン・ジミニャーノ', 'オルヴィエート',
+                'サグラダ', 'グエル公園',
+                'カルカソンヌ', 'ポン・デュ・ガール', '法王庁', 'カンタベリー', 'オランジュ',
+                'ヴェルサイユ', 'モン・サン＝ミッシェル', 'モン・サン・ミッシェル',
+                'ロンドン塔', 'キュー・ガーデンズ', 'グリニッジ', 'ストーンヘンジ', 'バース',
+                'ブルッヘ', 'ミュージアム島',
+            ];
+            document.querySelectorAll('.card').forEach(card => {
+                const titleEl = card.querySelector('.card-title');
+                if (!titleEl) return;
+                const title = titleEl.textContent;
+                if (UNESCO.some(s => title.includes(s))) {
+                    const badge = document.createElement('span');
+                    badge.className = 'heritage-badge';
+                    badge.textContent = '🏛️ ユネスコ世界遺産';
+                    titleEl.insertAdjacentElement('afterend', badge);
+                }
+            });
+
+            // ===== URLシェア / ダウンロード =====
+            const shareBar = document.createElement('div');
+            shareBar.id = 'share-bar';
+            shareBar.innerHTML = `
+                <button id="btn-share-url">🔗 URLをコピーして共有</button>
+                <button id="btn-download">📥 テキストで書き出し</button>
+                <span id="share-msg"></span>`;
+            document.body.appendChild(shareBar);
+
+            // URLをコピー
+            document.getElementById('btn-share-url').addEventListener('click', () => {
+                const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(getStates()))));
+                const url = location.origin + location.pathname + '?share=' + encoded;
+                navigator.clipboard.writeText(url).then(() => {
+                    const msg = document.getElementById('share-msg');
+                    msg.textContent = '✅ コピーしました！';
+                    setTimeout(() => msg.textContent = '', 3000);
+                });
+            });
+
+            // テキストで書き出し
+            document.getElementById('btn-download').addEventListener('click', () => {
+                const states = getStates();
+                const adopted = [], skipped = [];
+                document.querySelectorAll('.card').forEach(card => {
+                    const key = cardKey(card);
+                    const title = card.querySelector('.card-title')?.textContent?.trim() || '';
+                    const country = card.closest('.country-section')?.querySelector('h2')?.textContent?.trim() || '';
+                    if (states[key] === 'adopted') adopted.push(`✅ ${title}（${country}）`);
+                    if (states[key] === 'skipped') skipped.push(`❌ ${title}（${country}）`);
+                });
+                const text = [
+                    'ヨーロッパ家族旅行 2026 - 採用スポット一覧',
+                    '='.repeat(40),
+                    '',
+                    `✅ 採用 ${adopted.length}件`,
+                    ...adopted,
+                    '',
+                    `❌ 興味なし ${skipped.length}件`,
+                    ...skipped,
+                    '',
+                    `出力日時：${new Date().toLocaleString('ja-JP')}`,
+                ].join('\n');
+                const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
+                const a = document.createElement('a');
+                a.href = URL.createObjectURL(blob);
+                a.download = 'europe_spots.txt';
+                a.click();
+            });
+
+            // URLからインポート
+            const params = new URLSearchParams(location.search);
+            if (params.has('share')) {
+                try {
+                    const imported = JSON.parse(decodeURIComponent(escape(atob(params.get('share')))));
+                    const count = Object.keys(imported).length;
+                    if (count > 0 && confirm(`共有されたリストを読み込みますか？\n（採用/興味なし: ${count}件）\n※現在の自分の選択は上書きされます`)) {
+                        saveStates(imported);
+                        document.querySelectorAll('.card').forEach(c => applyState(c, imported[cardKey(c)] || null));
+                        updateCounter();
+                        // URLをクリーンアップ
+                        history.replaceState({}, '', location.pathname);
+                    }
+                } catch (e) { console.warn('URLインポート失敗', e); }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
