@@ -1504,8 +1504,7 @@
                 </div>
                 <div class="card">
                     <div class="card-title">プロムナード・プランテ</div>
-                    <div class="card-desc">廃線跡を転用した全長 4.7kmの高架緑道。ニューヨークのハイラインのモデル。散策が楽しい緑道コース</div><a
-                        class="img-link"
+                    <div class="card-desc">廃線跡を転用した全長 4.7kmの高架緑道。ニューヨークのハイラインのモデル。散策が楽しい緑道コース</div><a class="img-link"
                         href="https://www.google.com/search?q=Promenade+Plantee+Paris+elevated+garden&tbm=isch"
                         target="_blank">🔍 画像を見る</a>
                 </div>
@@ -1620,7 +1619,8 @@
                 </div>
                 <div class="card stopover">
                     <div class="card-title">マルクト広場 & ベルフリー</div>
-                    <div class="card-desc">ベルギーワッフルが山盛り。チョコレート・ジェラート・フリッツ（ポテト）が買える広場。ベルギー最初の目的地に最適</div><a class="img-link"
+                    <div class="card-desc">ベルギーワッフルが山盛り。チョコレート・ジェラート・フリッツ（ポテト）が買える広場。ベルギー最初の目的地に最適</div><a
+                        class="img-link"
                         href="https://www.google.com/search?q=Bruges+Markt+square+waffles+Belgium&tbm=isch"
                         target="_blank">🔍 画像を見る</a>
                 </div>
@@ -1692,7 +1692,8 @@
                 </div>
                 <div class="card">
                     <div class="card-title">ゴッズ・オウン・ジャンクヤード</div>
-                    <div class="card-desc">ネオンサイン・色鮮やかなアートギャラリー。強烈なルックは11歳に超インパクト。スナップ映えする現代アート展示</div><a class="img-link"
+                    <div class="card-desc">ネオンサイン・色鮮やかなアートギャラリー。強烈なルックは11歳に超インパクト。スナップ映えする現代アート展示</div><a
+                        class="img-link"
                         href="https://www.google.com/search?q=God%27s+Own+Junkyard+London+neon+art&tbm=isch"
                         target="_blank">🔍 画像を見る</a>
                 </div>
@@ -1787,9 +1788,9 @@
         /* ===== 採用/スキップ ステータス ===== */
         .card-actions {
             display: flex;
-            gap: 6px;
+            gap: 4px;
             margin-top: 8px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
         }
 
         .btn-mustgo,
@@ -1798,12 +1799,15 @@
         .btn-reset {
             border: none;
             border-radius: 20px;
-            padding: 4px 12px;
-            font-size: 0.78rem;
+            padding: 4px 6px;
+            font-size: 0.7rem;
             font-weight: 700;
             cursor: pointer;
             transition: all .15s;
             font-family: inherit;
+            flex: 1;
+            text-align: center;
+            white-space: nowrap;
         }
 
         .btn-mustgo {
@@ -2002,8 +2006,8 @@
             const states = getStates();
             // 互換性マイグレーション
             let migrated = false;
-            for(let k in states) {
-                if(states[k] === 'adopted') { states[k] = 'mustgo'; migrated = true; }
+            for (let k in states) {
+                if (states[k] === 'adopted') { states[k] = 'mustgo'; migrated = true; }
             }
             if (migrated) saveStates(states);
 
