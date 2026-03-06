@@ -1989,9 +1989,8 @@
         }
 
         function applyState(card, state) {
-            card.classList.remove('adopted', 'skipped');
-            if (state === 'adopted') card.classList.add('adopted');
-            if (state === 'skipped') card.classList.add('skipped');
+            card.classList.remove('adopted', 'mustgo', 'interested', 'skipped');
+            if (state) card.classList.add(state);
         }
 
         function updateCounter() {
