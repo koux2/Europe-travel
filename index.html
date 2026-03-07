@@ -1974,7 +1974,15 @@
         }
 
         function cardKey(card) {
-            return card.querySelector('.card-title')?.textContent?.trim().slice(0, 30) || Math.random();
+            const titleEl = card.querySelector('.card-title');
+            if (!titleEl) return Math.random().toString();
+            // Create a clone to strip out dynamic elements like heritage-badge before extracting text
+            const clone = titleEl.cloneNode(true);
+            const badges = clone.querySelectorAll('.heritage-badge');
+            badges.forEach(b => b.remove());
+            // Normalize by removing all whitespace, stars, and common icons so old URLs matching works perfectly
+            let text = clone.textContent.replace(/[\s⭐🏛️🏰]/g, '');
+            return text.slice(0, 30);
         }
 
         function applyState(card, state) {
@@ -2172,7 +2180,12 @@
             // Handle old '?share=' format for backward compatibility
             if (params.has('share')) {
                 try {
-                    const imported = JSON.parse(decodeURIComponent(escape(atob(params.get('share')))));
+                    const parsed = JSON.parse(decodeURIComponent(escape(atob(params.get('share')))));
+                    const imported = {};
+                    for (const [key, val] of Object.entries(parsed)) {
+                        const normKey = key.replace(/card_/, '').replace(/[\s⭐🏛️🏰]/g, '').slice(0, 30);
+                        imported[normKey] = val;
+                    }
                     const count = Object.keys(imported).length;
                     if (count > 0) {
                         saveStates(imported);
@@ -2195,7 +2208,8 @@
 
                     // Reconstruct original state format
                     for (const [key, shortVal] of Object.entries(optimizedStates)) {
-                        imported[key] = reverseStateMap[shortVal] || shortVal;
+                        const normKey = key.replace(/card_/, '').replace(/[\s⭐🏛️🏰]/g, '').slice(0, 30);
+                        imported[normKey] = reverseStateMap[shortVal] || shortVal;
                     }
 
                     saveStates(imported); // Save the imported states
