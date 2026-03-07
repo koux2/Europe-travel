@@ -2146,7 +2146,10 @@
                 const blob = new Blob([text], { type: 'text/plain;charset=utf-8' });
                 const a = document.createElement('a');
                 a.href = URL.createObjectURL(blob);
-                a.download = 'europe_spots.txt';
+                const d = new Date();
+                const mmddhhmm = [d.getMonth() + 1, d.getDate(), d.getHours(), d.getMinutes()]
+                    .map(n => n.toString().padStart(2, '0')).join('');
+                a.download = `europe_spots_${mmddhhmm}.txt`;
                 a.click();
             });
 
