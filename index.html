@@ -1897,6 +1897,11 @@
             color: #616161;
         }
 
+        .count-badge.unselected {
+            background: #f5f5f5;
+            color: #9e9e9e;
+        }
+
         #btn-reset-all {
             border: 1px solid #ddd;
             background: white;
@@ -1994,9 +1999,16 @@
         function updateCounter() {
             const states = getStates();
             const vals = Object.values(states);
-            document.getElementById('cnt-mustgo').textContent = '🔥 絶対行く ' + vals.filter(v => v === 'mustgo').length;
-            document.getElementById('cnt-interested').textContent = '✅ 興味あり ' + vals.filter(v => v === 'interested').length;
-            document.getElementById('cnt-skipped').textContent = '❌ 興味なし ' + vals.filter(v => v === 'skipped').length;
+            const totalCards = document.querySelectorAll('.card').length;
+            const mustgoCount = vals.filter(v => v === 'mustgo').length;
+            const interestedCount = vals.filter(v => v === 'interested').length;
+            const skippedCount = vals.filter(v => v === 'skipped').length;
+            const unselectedCount = totalCards - (mustgoCount + interestedCount + skippedCount);
+
+            document.getElementById('cnt-mustgo').textContent = '🔥 絶対行く ' + mustgoCount;
+            document.getElementById('cnt-interested').textContent = '✅ 興味あり ' + interestedCount;
+            document.getElementById('cnt-skipped').textContent = '❌ 興味なし ' + skippedCount;
+            document.getElementById('cnt-unselected').textContent = '❔ 未選択 ' + unselectedCount;
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -2016,6 +2028,7 @@
       <span class="count-badge mustgo" id="cnt-mustgo">🔥 絶対行く 0</span>
       <span class="count-badge interested" id="cnt-interested">✅ 興味あり 0</span>
       <span class="count-badge skipped" id="cnt-skipped">❌ 興味なし 0</span>
+      <span class="count-badge unselected" id="cnt-unselected">❔ 未選択 0</span>
       <button id="btn-reset-all">全リセット</button>`;
             nav.appendChild(bar);
 
@@ -2111,12 +2124,24 @@
 
             // URLをコピー
             document.getElementById('btn-share-url').addEventListener('click', () => {
-                const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(getStates()))));
-                const url = location.origin + location.pathname + '?share=' + encoded;
+                const states = getStates();
+                // Optimize serialization by removing the "card_" prefix and mapping states to short codes
+                const stateMap = { 'mustgo': 'm', 'interested': 'i', 'skipped': 's' };
+                const optimizedStates = {};
+                for (const [key, val] of Object.entries(states)) {
+                    if (val) {
+                        const shortKey = key.replace('card_', '');
+                        optimizedStates[shortKey] = stateMap[val] || val;
+                    }
+                }
+                const json = JSON.stringify(optimizedStates);
+                const encoded = encodeURIComponent(json);
+                const url = window.location.origin + window.location.pathname + '#states=' + encoded;
+
                 navigator.clipboard.writeText(url).then(() => {
-                    const msg = document.getElementById('share-msg');
-                    msg.textContent = '✅ コピーしました！';
-                    setTimeout(() => msg.textContent = '', 3000);
+                    alert('状態を含むURLをコピーしました！\nLINE等で共有して開くと、この状態が復元されます。');
+                }).catch(e => {
+                    prompt('以下のURLをコピーしてください:', url);
                 });
             });
 
@@ -2159,6 +2184,9 @@
 
             // URLからインポート
             const params = new URLSearchParams(location.search);
+            const hash = window.location.hash;
+
+            // Handle old '?share=' format for backward compatibility
             if (params.has('share')) {
                 try {
                     const imported = JSON.parse(decodeURIComponent(escape(atob(params.get('share')))));
@@ -2170,7 +2198,32 @@
                         // URLをクリーンアップ
                         history.replaceState({}, '', location.pathname);
                     }
-                } catch (e) { console.warn('URLインポート失敗', e); }
+                } catch (e) { console.warn('URLインポート失敗 (旧形式)', e); }
+            }
+            // Handle new '#states=' format
+            if (hash.startsWith('#states=')) {
+                try {
+                    const json = decodeURIComponent(hash.substring(8));
+                    const optimizedStates = JSON.parse(json);
+                    const imported = {};
+                    const reverseStateMap = { 'm': 'mustgo', 'i': 'interested', 's': 'skipped' };
+
+                    // Reconstruct original state format
+                    for (const [shortKey, shortVal] of Object.entries(optimizedStates)) {
+                        const originalVal = reverseStateMap[shortVal] || shortVal;
+                        // For backwards compatibility, check if shortKey already has 'card_'
+                        const fullKey = shortKey.startsWith('card_') ? shortKey : 'card_' + shortKey;
+                        imported[fullKey] = originalVal;
+                    }
+
+                    if (confirm('URLから状態を読み込みますか？\n（現在の状態は上書きされます）')) {
+                        saveStates(imported); // Save the imported states
+                        document.querySelectorAll('.card').forEach(c => applyState(c, imported[cardKey(c)] || null));
+                        updateCounter();
+                        // URLをクリーンアップ
+                        history.replaceState({}, '', location.pathname);
+                    }
+                } catch (e) { console.warn('URLインポート失敗 (新形式)', e); }
             }
         });
     </script>
