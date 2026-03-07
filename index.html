@@ -2194,11 +2194,8 @@
                     const reverseStateMap = { 'm': 'mustgo', 'i': 'interested', 's': 'skipped' };
 
                     // Reconstruct original state format
-                    for (const [shortKey, shortVal] of Object.entries(optimizedStates)) {
-                        const originalVal = reverseStateMap[shortVal] || shortVal;
-                        // For backwards compatibility, check if shortKey already has 'card_'
-                        const fullKey = shortKey.startsWith('card_') ? shortKey : 'card_' + shortKey;
-                        imported[fullKey] = originalVal;
+                    for (const [key, shortVal] of Object.entries(optimizedStates)) {
+                        imported[key] = reverseStateMap[shortVal] || shortVal;
                     }
 
                     saveStates(imported); // Save the imported states
