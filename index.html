@@ -2139,9 +2139,14 @@
                 const url = window.location.origin + window.location.pathname + '#states=' + encoded;
 
                 navigator.clipboard.writeText(url).then(() => {
-                    alert('状態を含むURLをコピーしました！\nLINE等で共有して開くと、この状態が復元されます。');
+                    const msg = document.getElementById('share-msg');
+                    msg.textContent = '✅ URLをコピーしました！';
+                    setTimeout(() => msg.textContent = '', 3000);
                 }).catch(e => {
-                    prompt('以下のURLをコピーしてください:', url);
+                    const msg = document.getElementById('share-msg');
+                    msg.textContent = '❌ コピーに失敗しました。';
+                    setTimeout(() => msg.textContent = '', 3000);
+                    console.error('URL copy failed:', e);
                 });
             });
 
@@ -2191,12 +2196,14 @@
                 try {
                     const imported = JSON.parse(decodeURIComponent(escape(atob(params.get('share')))));
                     const count = Object.keys(imported).length;
-                    if (count > 0 && confirm(`共有されたリストを読み込みますか？\n（絶対行く/興味あり/なし: ${count}件）\n※現在の自分の選択は上書きされます`)) {
+                    if (count > 0) {
                         saveStates(imported);
                         document.querySelectorAll('.card').forEach(c => applyState(c, imported[cardKey(c)] || null));
                         updateCounter();
                         // URLをクリーンアップ
                         history.replaceState({}, '', location.pathname);
+                        document.getElementById('share-msg').textContent = '✅ URLから状態を読み込みました！';
+                        setTimeout(() => document.getElementById('share-msg').textContent = '', 3000);
                     }
                 } catch (e) { console.warn('URLインポート失敗 (旧形式)', e); }
             }
@@ -2216,13 +2223,14 @@
                         imported[fullKey] = originalVal;
                     }
 
-                    if (confirm('URLから状態を読み込みますか？\n（現在の状態は上書きされます）')) {
-                        saveStates(imported); // Save the imported states
-                        document.querySelectorAll('.card').forEach(c => applyState(c, imported[cardKey(c)] || null));
-                        updateCounter();
-                        // URLをクリーンアップ
-                        history.replaceState({}, '', location.pathname);
-                    }
+                    saveStates(imported); // Save the imported states
+                    document.querySelectorAll('.card').forEach(c => applyState(c, imported[cardKey(c)] || null));
+                    updateCounter();
+                    // URLをクリーンアップ
+                    history.replaceState({}, '', location.pathname);
+
+                    document.getElementById('share-msg').textContent = '✅ URLから状態を読み込みました！';
+                    setTimeout(() => document.getElementById('share-msg').textContent = '', 3000);
                 } catch (e) { console.warn('URLインポート失敗 (新形式)', e); }
             }
         });
